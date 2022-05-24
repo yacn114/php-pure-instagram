@@ -1,0 +1,16 @@
+.profile-head {
+    transform: translateY(5rem)
+}
+
+.cover {
+    background-image: url('https://i.pinimg.com/originals/39/ea/27/39ea275e1a9bc71dd03925b6ddc755bc.jpg');
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+body {
+    background: #654ea3;
+    background: linear-gradient(to right, #e96443, #904e95);
+    min-height: 100vh;
+    overflow-x: hidden
+}
