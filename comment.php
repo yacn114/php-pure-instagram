@@ -44,7 +44,7 @@
         $fetchUsers = mysqli_fetch_assoc($sql1);
         ?>
   <div class="card col-12" style="width: 18rem;margin: 20px">
-  <img class="card-img-top" src=<?php echo "/".$fetch['image']; ?> alt="Card image cap">
+  <img class="card-img-top" src=<?php echo $fetch['image']; ?> alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><a href="/u?u=<?php echo $fetchUsers['username'] ?>"><?php echo $fetch['PostW']; ?></a></h5>
     <p class="card-text"><?php echo $fetch['caption']; ?></p>
@@ -59,12 +59,12 @@
                   
             <div class="col-1"></div>
       <div style="background-color: whitesmoke;height: auto; padding: 50px" class="col-7">
-             <form method="post" action="/check2.php?postid=<?php echo $pos ?>">
+             <form method="post" action="check2.php?postid=<?php echo $pos ?>">
             <input type="text" id="addANote" name="commentbox" class="form-control" placeholder="Type comment..."/>
                         </form>
                         <div class="card card-widget" id="xbox" style="border-radius: 5%; margin-top: 50px; padding: 20px;">
                           <?php 
-                          $sq = mysqli_query($link,"SELECT * FROM comment where PostID = $pos");
+                          $sq = mysqli_query($link,"SELECT * FROM comment where PostID = $pos  ORDER BY time DESC");
                           while ($f= mysqli_fetch_assoc($sq)) {
 $o = $f['commentW'];
 $r = mysqli_query($link,"SELECT * FROM Users where username = '$o'");
@@ -74,7 +74,7 @@ $ok = mysqli_fetch_assoc($r);
                           <div class="col-12">
 <center><img class="img-circle col-md-4" id="img" src=
 <?php
-echo "/profile/".$ok['image'] ?> alt="User Image"><br><br><a href="/u?u=<?php echo $f['commentW']; ?>"><?php echo $f['commentW']; ?></a></center>
+echo "profile/".$ok['image'] ?> alt="User Image"><br><br><a href="/u?u=<?php echo $f['commentW']; ?>"><?php echo $f['commentW']; ?></a></center>
 
                             <p> <br>
 <?php echo $f['commentText']; ?>

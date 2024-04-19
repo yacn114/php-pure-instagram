@@ -1,5 +1,9 @@
 <?php 
-$user =$_COOKIE['loginUser'];
+if (isset($user)){
+	$user = $_COOKIE['loginUser'];
+}else{
+	$user = "";
+}
 include 'dbs/config.php';
 
 $sql = mysqli_query($link,"select * from Posts");
@@ -48,7 +52,7 @@ overflow-x: hidden
           </li>
           
           <li class="nav-item">
-            <a class="nav-link disabled"><?php echo $_COOKIE['loginUser'];?></a>
+            <a class="nav-link disabled"><?php if(isset($_COOKIE['loginUser'])){echo $_COOKIE['loginUser'];}else{echo "";}?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="panel.php">New Post</a>
@@ -73,7 +77,7 @@ overflow-x: hidden
   <div class="card-body">
     <h5 class="card-title"><a href="/u?u=<?php echo $fetchUsers['username'] ?>"><?php echo $fetch['PostW']; ?></a></h5>
     <p class="card-text"><?php echo $fetch['caption']; ?></p>
-    <a href="/comment.php?id=<?php echo $fetch['PostID'] ?>" class="btn btn-primary">ادامه</a>
+    <a href="comment.php?id=<?php echo $fetch['PostID'] ?>" class="btn btn-primary">ادامه</a>
   </div>
 </div>
 <?php } ?>

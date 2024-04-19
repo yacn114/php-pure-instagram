@@ -1,8 +1,12 @@
 <?php 
-$user =$_COOKIE['loginUser'];
+if (isset($_COOKIE['loginUser'])){
+	$user = $_COOKIE['loginUser'];
+}else{
+	$user = null;
+}
 
 include 'dbs/config.php';
-$id = mysqli_query($link,"select PersonID from Users where username = '$user'");
+$id = mysqli_query($link,"SELECT PersonID from Users where username = '$user'");
 $user_id = mysqli_fetch_assoc($id);
 $userid = $user_id['PersonID'];
 if (isset($_POST['submit'])) {

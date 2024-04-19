@@ -6,7 +6,7 @@ $user2=$_COOKIE['loginUser'];
 $user =$_GET['u'];
 include '../dbs/config.php';
 
-$sql = mysqli_query($link,"select * from Users where username = '$user'");
+$sql = mysqli_query($link,"select * from Users where username = '$user2'");
 $fetch = mysqli_fetch_assoc($sql);
 ?>
 <!DOCTYPE html>
@@ -21,6 +21,7 @@ $fetch = mysqli_fetch_assoc($sql);
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
 <div class="row py-5 px-4">
     <div class="col-md-11 mx-auto">
         <!-- Profile widget -->
@@ -61,11 +62,11 @@ $fetch = mysqli_fetch_assoc($sql);
                     <?php 
                     $usere = $_GET['u'];
                     $userid = $fetch['PersonID'];
-                    $query = mysqli_query($link,"SELECT * FROM Posts where userid = '$userid'");
+                    $query = mysqli_query($link,"SELECT * FROM posts where userid = '$userid'");
                     while ($fetch = mysqli_fetch_assoc($query)) {
                     	
                     	?>
-                    	<div class="col-4 mb-2"><a href="../comment.php/?id=<?php echo $fetch['PostID'] ?> ?>"><img src=<?php echo "../".$fetch['image']; ?> alt="" class="img-fluid rounded shadow-sm"></a></div>
+                    	<div class="col-4 mb-2"><a href=<?php echo "../comment.php/?id=".$fetch['PostID'];?> alt="" ><img src=<?php echo "../".$fetch['image']; ?> alt="" class="img-fluid rounded shadow-sm"></a></div>
                     	<?php
                     }
                      ?>
